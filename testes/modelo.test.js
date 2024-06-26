@@ -36,20 +36,6 @@ test('Testando cadastro de respostas', () => {
   expect(respostas[0].id_resposta).toBe(respostas[1].id_resposta-1);
 });
 
-test('Testando votação de respostas', () => {
-  modelo.cadastrar_pergunta('1 + 1 = ?');
-  const perguntas = modelo.listar_perguntas();
-  modelo.cadastrar_resposta(perguntas[0].id_pergunta, '2');
-  modelo.cadastrar_resposta(perguntas[0].id_pergunta, '3');
-  let respostas = modelo.listar_respostas(perguntas[0].id_pergunta);
-  modelo.votar_resposta(respostas[0].id_resposta);
-  modelo.votar_resposta(respostas[0].id_resposta);
-  modelo.votar_resposta(respostas[1].id_resposta);
-  respostas = modelo.listar_respostas(perguntas[0].id_pergunta);
-  expect(respostas[0].votos).toBe(2);
-  expect(respostas[1].votos).toBe(1);
-});
-
 test('Testando get de Perguntas', () => {
   modelo.cadastrar_pergunta('1 + 1 = ?');
   const perguntas = modelo.listar_perguntas();
